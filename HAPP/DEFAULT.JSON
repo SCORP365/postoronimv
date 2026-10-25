@@ -1,1 +1,38 @@
-
+{
+  "BlockIp": [],
+  "BlockSites": [
+    "geosite:win-spy",
+    "geosite:torrent",
+    "geosite:category-ads"
+  ],
+  "DirectIp": [],
+  "DirectSites": [],
+  "DnsHosts": {
+    "lkfl2.nalog.ru": "213.24.64.175",
+    "lknpd.nalog.ru": "213.24.64.181"
+  },
+  "DomainStrategy": "IPIfNonMatch",
+  "DomesticDNSDomain": "https://77.88.8.8/dns-query",
+  "DomesticDNSIP": "77.88.8.8",
+  "DomesticDNSType": "DoH",
+  "FakeDNS": "false",
+  "Geoipurl": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat",
+  "Geositeurl": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat",
+  "GlobalProxy": "false",
+  "LastUpdated": 1792938747,
+  "Name": "Маршруты ПосторонимВ",
+  "ProxyIp": [],
+  "ProxySites": [
+    "geosite:google-play",
+    "geosite:github",
+    "geosite:twitch-ads",
+    "geosite:youtube",
+    "geosite:discord",
+    "geosite:roblox",
+    "geosite:instagram"
+  ],
+  "RemoteDNSDomain": "https://8.8.8.8/dns-query",
+  "RemoteDNSIP": "8.8.8.8",
+  "RemoteDNSType": "DoH",
+  "RouteOrder": "block-proxy-direct"
+}
