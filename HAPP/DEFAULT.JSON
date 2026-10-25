@@ -5,8 +5,6 @@
     "geosite:torrent",
     "geosite:category-ads"
   ],
-  "DirectIp": [],
-  "DirectSites": [],
   "DnsHosts": {
     "lkfl2.nalog.ru": "213.24.64.175",
     "lknpd.nalog.ru": "213.24.64.181"
@@ -31,6 +29,8 @@
     "geosite:roblox",
     "geosite:instagram"
   ],
+  "DirectIp": [],
+  "DirectSites": [],
   "RemoteDNSDomain": "https://8.8.8.8/dns-query",
   "RemoteDNSIP": "8.8.8.8",
   "RemoteDNSType": "DoH",
