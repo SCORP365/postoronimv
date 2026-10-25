@@ -1,8 +1,7 @@
 {
   "BlockIp": [],
   "BlockSites": [
-    "geosite:win-spy",
-    "geosite:category-ads"
+    "geosite:win-spy"
   ],
   "DnsHosts": {
     "lkfl2.nalog.ru": "213.24.64.175",
