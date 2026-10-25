@@ -39,17 +39,15 @@
   "ProxySites": [
     "geosite:google-play",
     "geosite:github",
-    "geosite:twitch-ads",
     "geosite:youtube",
     "geosite:telegram",
     "geosite:discord",
     "geosite:roblox",
-    "geosite:instagram",
+    "geosite:instagram"
   ],
   "ProxyIp": [],
   "BlockSites": [
     "geosite:win-spy",
-    "geosite:torrent",
     "geosite:category-ads"
   ],
   "BlockIp": [],
