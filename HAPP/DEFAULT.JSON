@@ -29,7 +29,9 @@
     "geosite:roblox",
     "geosite:instagram"
   ],
-  "DirectIp": [],
+  "DirectIp": [
+    "geoip:private"
+  ],
   "DirectSites": [
     "geosite:private"
   ],
