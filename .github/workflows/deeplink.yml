@@ -17,12 +17,14 @@ jobs:
 
       - name: Generate DEEPLINK
         run: |
-          BASE64=$(base64 -w0 HAPP/DEFAULT.JSON)
-          echo "happ://routing/onadd/$BASE64" > HAPP/DEFAULT.DEEPLINK
+          BASE64=$(base64 -w0 Routing/JSON/DEFAULT.JSON)
+          echo "happ://routing/onadd/$BASE64" > Routing/HAPP/DEFAULT.DEEPLINK
+          echo "incy://routing/onadd/$BASE64" > Routing/INCY/DEFAULT.DEEPLINK
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add HAPP/DEFAULT.DEEPLINK
+          git add Routing/HAPP/DEFAULT.DEEPLINK
+          git add Routing/INCY/DEFAULT.DEEPLINK
           git diff --staged --quiet || (git commit -m "update deeplink" && git push)
