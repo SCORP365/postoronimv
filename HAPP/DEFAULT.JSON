@@ -11,7 +11,7 @@
   "DomesticDNSDomain": "https://77.88.8.8/dns-query",
   "DomesticDNSIP": "77.88.8.8",
   "Geoipurl": "https://github.com/SCORP365/postoronimv/blob/main/geofile/geoip.dat",
-  "Geositeurl": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat",
+  "Geositeurl": "https://github.com/SCORP365/postoronimv/blob/main/geofile/geosite.dat",
   "LastUpdated": "1792916487",
   "DnsHosts": {
     "lkfl2.nalog.ru": "213.24.64.175",
