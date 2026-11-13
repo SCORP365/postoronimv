@@ -31,7 +31,8 @@
     "geosite:telegram",
     "geosite:discord",
     "geosite:roblox",
-    "geosite:instagram"
+    "geosite:instagram",
+    "geosite:WHATSAPP"
   ],
   "ProxyIp": [],
   "BlockSites": [
