@@ -25,15 +25,19 @@
     "geoip:private"
   ],
   "ProxySites": [
-    geosite:google-play
-    geosite:github
-    geosite:youtube
-    geosite:telegram
-    geosite:discord
-    geosite:instagram
-    geosite:roblox
-    geosite:whatsapp
-    geosite:openai
+    "geosite:google-play",
+    "geosite:github",
+    "geosite:youtube",
+    "geosite:telegram",
+    "geosite:discord",
+    "geosite:instagram",
+    "geosite:roblox",
+    "geosite:whatsapp",
+    "geosite:openai",
+    "geosite:openai",
+    "geosite:supercell",
+    "domain:brawlstars.com",
+    "domain:chatgpt.com"
   ],
   "ProxyIp": [],
   "BlockSites": [
