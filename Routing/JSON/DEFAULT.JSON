@@ -37,8 +37,6 @@
     geosite:supercell
     domain:brawlstars.com
     domain:chatgpt.com
-    domain:telegram.org
-    domain:postoronimv.site
   ],
   "ProxyIp": [],
   "BlockSites": [
