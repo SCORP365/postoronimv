@@ -35,10 +35,11 @@
     "geosite:whatsapp",
     "geosite:openai",
     "geosite:supercell",
-    "domain:brawlstars.com",
     "domain:chatgpt.com"
   ],
-  "ProxyIp": [],
+  "ProxyIp": [
+    "geoip:telegram"
+  ],
   "BlockSites": [
     "geosite:win-spy",
     "geosite:category-ads"
