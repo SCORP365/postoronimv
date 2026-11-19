@@ -11,7 +11,7 @@ umask 077
 
 if ! command -v curl >/dev/null 2>&1 || ! command -v git >/dev/null 2>&1 || ! command -v python3 >/dev/null 2>&1; then
   apt-get update
-  DEBIAN_FRONTEND=noninteractive apt-get install -y curl git python3
+  DEBIAN_FRONTEND=noninteractive apt-get install -y curl git python3 python3-pip python3-venv
 fi
 
 CLIENT_ID="Iv23liEdH6Ic3zheeHJP"
