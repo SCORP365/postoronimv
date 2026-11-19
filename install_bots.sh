@@ -3,7 +3,7 @@
 set -Eeuo pipefail
 umask 077
 
-[[ \${EUID} -eq 0 ]] || { echo "Запусти команду от root." >&2; exit 1; }
+[[ ${EUID} -eq 0 ]] || { echo "Запусти команду от root." >&2; exit 1; }
 [[ -f /etc/os-release ]] && grep -Eqi 'ubuntu|debian' /etc/os-release || {
   echo "Поддерживаются Ubuntu и Debian с APT." >&2
   exit 1
@@ -100,7 +100,7 @@ cleanup() {
 trap cleanup EXIT
 cat > "$ASKPASS_DIR/askpass.sh" <<'ASKPASS'
 #!/usr/bin/env bash
-case "\${1:-}" in
+case "${1:-}" in
   *sername*) printf '%s\n' 'x-access-token' ;;
   *) printf '%s\n' "$GITHUB_TOKEN" ;;
 esac
