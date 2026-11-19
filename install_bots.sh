@@ -45,8 +45,11 @@ expires_in="$(printf '%s' "$response" | parse_json expires_in)"
 [[ "$expires_in" =~ ^[0-9]+$ ]] || expires_in=900
 
 echo
-echo "Открой на телефоне или компьютере: $verification_uri"
-echo "Введи одноразовый код: $user_code"
+echo "===== ОТСКАНИРУЙ QR-КОД ТЕЛЕФОНОМ ====="
+qrencode -t ANSIUTF8 "$verification_uri"
+echo
+echo "Код подтверждения GitHub: $user_code"
+echo "После сканирования QR введи этот код на открывшейся странице GitHub."
 echo "Код предназначен только для авторизации на GitHub. Никому его не отправляй."
 deadline=$(( $(date +%s) + expires_in ))
 access_token=""
