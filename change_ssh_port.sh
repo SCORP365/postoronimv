@@ -168,11 +168,19 @@ if ! apply_ssh_config; then
 fi
 
 if ! has_listener "$TARGET_PORT"; then
-  echo "Порт $TARGET_PORT не появился в LISTEN. Текущая конфигурация:"
+  echo "Порт $TARGET_PORT не появился в LISTEN. Восстанавливаю исходную конфигурацию."
   show_listener 22
   show_listener "$TARGET_PORT"
-  echo "Оставляю резервные копии: $BACKUP_DIR"
-  fail "Не удалось подтвердить прослушивание нового порта. Не закрывай текущую SSH-сессию."
+  restore_one "$SSH_DROPIN" "ssh-dropin-existed"
+  if (( SOCKET_MODE )); then restore_one "$SOCKET_DROPIN" "socket-dropin-existed"; fi
+  if (( SOCKET_MODE )); then
+    systemctl daemon-reload || true
+    systemctl restart ssh.socket || true
+  else
+    systemctl restart ssh 2>/dev/null || systemctl restart sshd 2>/dev/null || true
+  fi
+  echo "Резервные копии: $BACKUP_DIR"
+  fail "Новый порт не заработал. Исходные SSH-файлы восстановлены; текущую сессию не закрывай."
 fi
 
 log "Проверка нового подключения"
