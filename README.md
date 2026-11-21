@@ -27,6 +27,21 @@ bash <(curl -fsSL https://raw.githubusercontent.com/SCORP365/postoronimv/main/in
 - [Прямая ссылка на install_bots.sh](https://raw.githubusercontent.com/SCORP365/postoronimv/main/install_bots.sh)
 - [Приватный репозиторий менеджера и ботов](https://github.com/SCORP365/postoronimv_bots)
 
+## Изменение SSH-порта на 8422
+
+Для переноса SSH с порта 22 на порт 8422 на Ubuntu/Debian подключись к серверу под `root` и выполни:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/SCORP365/postoronimv/main/change_ssh_port.sh)
+```
+
+Скрипт создаёт резервные копии конфигурации, разрешает TCP-порт 8422 в обнаруженном UFW/firewalld, проверяет конфигурацию SSH и сначала временно оставляет открытыми оба порта — 22 и 8422. Не закрывай исходную SSH-сессию: открой второе окно терминала и проверь вход на порт 8422. Только после твоего подтверждения скрипт отключит порт 22.
+
+Если подтверждение не дано, оба порта останутся открытыми. Внешний firewall в панели VPS при наличии нужно настроить отдельно. Скрипт не переключает автоматически обычный `ssh.service` на socket activation; если `ssh.socket` уже активен, он сохраняет этот режим и включает его автозапуск.
+
+- [Файл change_ssh_port.sh](https://github.com/SCORP365/postoronimv/blob/main/change_ssh_port.sh)
+- [Прямая ссылка на change_ssh_port.sh](https://raw.githubusercontent.com/SCORP365/postoronimv/main/change_ssh_port.sh)
+
 ## Требования
 
 - Ubuntu или Debian с пакетным менеджером APT.
