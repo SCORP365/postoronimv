@@ -18,6 +18,10 @@ has_listener() {
   local port="$1"
   ss -H -lnt 2>/dev/null | awk -v suffix=":$port" '$4 ~ (suffix "$") { found=1 } END { exit !found }'
 }
+effective_has_port() {
+  local port="$1"
+  sshd -T 2>/dev/null | awk -v wanted="$port" '$1=="port" && $2==wanted { found=1 } END { exit !found }'
+}
 show_listener() {
   local port="$1"
   ss -lntp 2>/dev/null | awk -v suffix=":$port" 'NR==1 || $4 ~ (suffix "$")'
@@ -158,6 +162,13 @@ log "Этап 1/2: временно включаем оба SSH-порта"
 write_ssh_config both
 if (( SOCKET_MODE )); then write_socket_config both; fi
 
+if ! effective_has_port "$TARGET_PORT"; then
+  echo "sshd не видит порт $TARGET_PORT в итоговой конфигурации. Возможно, sshd_config не подключает каталог $SSH_DROPIN_DIR."
+  restore_one "$SSH_DROPIN" "ssh-dropin-existed"
+  if (( SOCKET_MODE )); then restore_one "$SOCKET_DROPIN" "socket-dropin-existed"; fi
+  fail "Конфигурация не применена. Исходные файлы восстановлены. Резервная копия: $BACKUP_DIR"
+fi
+
 if ! apply_ssh_config; then
   echo "Не удалось применить конфигурацию. Восстанавливаю исходные файлы."
   restore_one "$SSH_DROPIN" "ssh-dropin-existed"
@@ -209,6 +220,13 @@ esac
 log "Этап 2/2: отключаем SSH-порт 22"
 write_ssh_config new
 if (( SOCKET_MODE )); then write_socket_config new; fi
+
+if ! effective_has_port "$TARGET_PORT" || effective_has_port 22; then
+  echo "Итоговая конфигурация sshd всё ещё содержит порт 22 или не содержит порт $TARGET_PORT."
+  echo "Возвращаю конфигурацию с обоими портами."
+  restore_dual_port
+  fail "Порт 22 не отключён в конфигурации. Резервная копия: $BACKUP_DIR"
+fi
 
 if ! apply_ssh_config; then
   echo "Не удалось применить финальную конфигурацию. Возвращаю оба порта."
