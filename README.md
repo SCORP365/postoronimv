@@ -12,6 +12,19 @@ bash <(curl -fsSL https://raw.githubusercontent.com/SCORP365/postoronimv/main/in
 
 Установщик проверит и при необходимости установит необходимые пакеты, запустит авторизацию GitHub Device Flow, клонирует приватный репозиторий и запустит установку менеджера.
 
+## Первичная подготовка нового VPS: обновление системы
+
+На только что арендованном VPS сначала выполни полное обновление Ubuntu/Debian:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/SCORP365/postoronimv/main/update_vps.sh)
+```
+
+Скрипт обновляет списки пакетов, устанавливает все доступные обновления системы (в том числе ядра), завершает настройку пакетов, удаляет ненужные зависимости и очищает кэш APT. После этого проверяет, нужна ли перезагрузка, и предлагает перезагрузить сервер. Самостоятельно сторонние программы и прикладной софт не устанавливает.
+
+- [Файл update_vps.sh](https://github.com/SCORP365/postoronimv/blob/main/update_vps.sh)
+- [Прямая ссылка на update_vps.sh](https://raw.githubusercontent.com/SCORP365/postoronimv/main/update_vps.sh)
+
 ## Авторизация GitHub
 
 1. Дождись QR-кода и одноразового кода в терминале.
